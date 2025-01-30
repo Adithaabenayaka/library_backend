@@ -1,14 +1,17 @@
 import express from 'express'
-import configRouter from './Routes/config.routes';
+import configRouter from './routes/inventory.routes';
+import connectDB from './config/db';
 
 const app = express();
 
 // Middlewares
 app.use(express.json());
-// app.use("/login", loginRoutes)
+// app.use("/login", loginRoutes) 
 app.use("/config", configRouter)
 
 
-app.listen(3020,()=>{
-    console.log("App Running")
+connectDB().then(()=>{
+    app.listen(3200,()=>{
+        console.log(`App Running on `)
+    })
 })
