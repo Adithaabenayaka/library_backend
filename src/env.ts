@@ -1,4 +1,4 @@
-import { getOsEnv } from "./lib/utils";
+import { getOsEnv } from "./service/lib/utils";
 import * as dotenv from 'dotenv'
 
 dotenv.config();

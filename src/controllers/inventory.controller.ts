@@ -5,7 +5,6 @@ class InventoryController{
 
     async getAllBooks(req:Request, res: Response){
         const books = await InventoryService.getAllBooks();
-        console.log(books)
         res.json(books)
     }
 
