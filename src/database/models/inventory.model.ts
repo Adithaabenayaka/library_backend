@@ -1,9 +1,9 @@
-import mongoose, { Schema, Document, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const BooksSchema: Schema = new Schema({
-    title: { type: String},
-    author: { type: String},
-    genre: { type: String },
+    title: { type: String, required: true},
+    author: { type: String, required: true},
+    genre: { type: String, required: true},
     publicationBy: { type: String, required: true },
 },{timestamps: true});
 

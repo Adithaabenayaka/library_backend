@@ -5,6 +5,6 @@ const configRouter = Router();
 
 configRouter.get('/books',InventoryController.getAllBooks)
 configRouter.post('/books',InventoryController.addBooks)
-
-
+configRouter.delete('/books/:id',InventoryController.deleteBook)
+configRouter.put('/books/:id',InventoryController.updateBook)
 export default configRouter;

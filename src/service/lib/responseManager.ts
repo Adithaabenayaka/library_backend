@@ -22,14 +22,17 @@ export const successResponse = (
 // Error Reponse
 export const errorResponse = (
   res: Response,
-  message: string,
-  error: any,
+  message: string ,
+  error: any = null,
   statusCode: number = 500
 ) => {
-  const response = {
+  const response: any = {
     success: false,
     message,
-    error,
   };
+
+  if(error!==null){
+    response.error = error
+  }
   return res.status(statusCode).json(response);
 };
