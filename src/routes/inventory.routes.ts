@@ -2,10 +2,9 @@ import { Router } from "express";
 import InventoryController from "../controllers/inventory.controller";
 
 const configRouter = Router();
-const inventoryController = new InventoryController()
 
-configRouter.get('/books',inventoryController.getAllBooks)
-configRouter.post('/books',inventoryController.addingBooks)
+configRouter.get('/books',InventoryController.getAllBooks)
+configRouter.post('/books',InventoryController.addBooks)
 
 
 export default configRouter;
