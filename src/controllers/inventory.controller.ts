@@ -21,7 +21,7 @@ class InventoryController {
   // Adding book data
   addBooks = async (req: Request, res: Response):Promise<void> => {
     try {
-      const { title, author, genre, publicationBy } = req.body;
+      const { title, author, genre, publicationBy, price, currency, description, imageUrl } = req.body;
 
       if (title) {
         console.log(title);
@@ -32,7 +32,11 @@ class InventoryController {
         title,
         author,
         genre,
-        publicationBy
+        publicationBy,
+        price, 
+        currency, 
+        description, 
+        imageUrl
       );
       successResponse(res, "Book data entry success", book);
     } catch (error: any) {

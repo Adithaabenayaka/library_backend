@@ -11,9 +11,14 @@ class InventoryService {
     title: string,
     author: string,
     genre: string,
-    publicationBy: string
+    publicationBy: string,
+    price: number, 
+    currency: string, 
+    description: string, 
+    imageUrl: string
+    
   ) {
-    const book = new Book({ title, author, genre, publicationBy });
+    const book = new Book({ title, author, genre, publicationBy,  price, currency, description, imageUrl  });
     await book.save();
     
   }
