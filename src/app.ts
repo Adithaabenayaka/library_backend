@@ -4,18 +4,24 @@ import connectDB from './config/db';
 import authRoutes from './routes/auth.routes';
 import { authenticateToken } from './middleware/authMiddleware';
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 
 app.use(cors({
-    origin: "*", // Allow all origins
-    credentials: true, // Allow cookies if needed
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+    origin: "*",
+    credentials: true, 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    allowedHeaders: ["Content-Type", "Authorization"], 
 }));
+
+app.use("/assets", express.static(path.join(__dirname, "../assets")));
 
 // Middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
 app.use("/auth", authRoutes);
 app.use("/config",authenticateToken, configRouter)
 

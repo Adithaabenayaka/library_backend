@@ -14,19 +14,21 @@ class InventoryController {
         res.statusCode
       );
     } catch (error: any) {
-      errorResponse(res, error.message || error, error, res.statusCode);
+      errorResponse(res, error.message || error, error, 500);
     }
   };
 
   // Adding book data
   addBooks = async (req: Request, res: Response):Promise<void> => {
     try {
-      const { title, author, genre, publicationBy, price, currency, description, imageUrl } = req.body;
-
-      if (title) {
-        console.log(title);
+      const { title, author, genre, publicationBy, price, currency, description } = req.body;
+      
+      if (!title || !author || !genre || !publicationBy || !price || !currency) {
+        errorResponse(res, "Missing required fields", null, 400);
         return;
       }
+
+      const imageUrl = req.file ? `/assets/${req.file.filename}` : "";
 
       const book = await InventoryService.addBooks(
         title,
@@ -40,7 +42,7 @@ class InventoryController {
       );
       successResponse(res, "Book data entry success", book);
     } catch (error: any) {
-      errorResponse(res, error.message, error, res.statusCode);
+      errorResponse(res, error.message, error, 500);
     }
   };
 
@@ -65,7 +67,7 @@ class InventoryController {
 
       successResponse(res, "Book deleted successfully", deletedBook);
     } catch (error: any) {
-      errorResponse(res, error.message || "Failed to delete book", error);
+      errorResponse(res, error.message || "Failed to delete book", error,500);
     }
   };
 
@@ -84,7 +86,7 @@ class InventoryController {
 
       successResponse(res, "Book updated successfully", updatedBook);
     } catch (error: any) {
-      errorResponse(res, error.message || "Failed to update book");
+      errorResponse(res, error.message || "Failed to update book",error,500);
     }
   }
 }
