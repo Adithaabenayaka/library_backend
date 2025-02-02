@@ -46,8 +46,6 @@ class BooksPvtController {
   deleteBook = async (req: Request, res: Response):Promise<void> => {
     try {
       const { id } = req.params;
-      console.log("first")
-      console.log(req.query)
 
       if (!id) {
         errorResponse(res, "Book ID is required");

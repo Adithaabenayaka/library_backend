@@ -31,6 +31,6 @@ app.use("/config",authenticateToken, booksPvtRouter)
 
 connectDB().then(()=>{
     app.listen(baseApp.PORT,()=>{
-        console.log(`App Running on `)
+        console.log(`App Running on ${baseApp.PORT} `)
     })
 })
