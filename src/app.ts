@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes';
 import { authenticateToken } from './middleware/authMiddleware';
 import cors from 'cors';
 import path from 'path';
+import { baseApp } from './env';
 
 const app = express();
 
@@ -29,7 +30,7 @@ app.use("/config",authenticateToken, booksPvtRouter)
 
 
 connectDB().then(()=>{
-    app.listen(3200,()=>{
+    app.listen(baseApp.PORT,()=>{
         console.log(`App Running on `)
     })
 })

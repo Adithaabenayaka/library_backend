@@ -1,6 +1,7 @@
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
+import { baseApp } from "../../env";
 
-const SECRET_KEY: Secret = "aditha"; 
+const SECRET_KEY: Secret = baseApp.JWT_SECRET_KEY; 
 
 export const generateToken = (payload: object, expiresIn: string = "1h") => {
     const options: SignOptions = {

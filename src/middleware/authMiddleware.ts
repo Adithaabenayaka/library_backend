@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { errorResponse } from "../service/lib/responseManager";
+import { baseApp } from "../env";
 
-const SECRET_KEY = "aditha";
+const SECRET_KEY = baseApp.JWT_SECRET_KEY;
 
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
