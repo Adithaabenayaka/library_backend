@@ -4,15 +4,11 @@ import { successResponse, errorResponse } from "../service/lib/responseManager";
 
 class InventoryController {
   // Retreive All book data
-  getAllBooks = async (req: Request, res: Response):Promise<void>  => {
+  getAllBooks = async (req: Request, res: Response): Promise<void> => {
     try {
-      const books = await InventoryService.getAllBooks();
-      successResponse(
-        res,
-        "Book data retreive successfully",
-        books,
-        res.statusCode
-      );
+      const keyword = req.query.keyword as string;
+      const books = await InventoryService.getAllBooks(keyword);
+      successResponse(res, "Books retrieved successfully", books, res.statusCode);
     } catch (error: any) {
       errorResponse(res, error.message || error, error, 500);
     }

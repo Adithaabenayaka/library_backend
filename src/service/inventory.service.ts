@@ -1,10 +1,22 @@
 import Book from "../database/models/inventory.model";
 
 class InventoryService {
-  // Retreive All book data
-  async getAllBooks() {
+  // Retreive book data
+  async getAllBooks(name?: string) {
+    if (name) {
+      const regex = new RegExp(name, 'i');
+      return await Book.find({
+        $or: [
+          { title: { $regex: regex } },
+          { author: { $regex: regex } },
+          { genre: { $regex: regex } },
+          { publicationBy: { $regex: regex } }
+        ]
+      });
+    }
     return await Book.find();
   }
+  
 
   // Adding book data
   async addBooks(

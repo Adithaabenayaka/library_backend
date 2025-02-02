@@ -11,5 +11,7 @@ const BooksSchema: Schema = new Schema({
     imageUrl: { type: String, required: true }
 },{timestamps: true});
 
+BooksSchema.index({ title: "text" });
+
 const Book = model("Book",BooksSchema)
 export default Book;
