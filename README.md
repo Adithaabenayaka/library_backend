@@ -31,6 +31,12 @@ cd library_backend
 Create a .env file in the project root and variable according to .env_sample
 
 npm install
+
+### Database Migration
+Change the Mongodb URL / Database in migrate-mongo-config.js file
+migrate-mongo up
+
+
 npm run dev 
 
 ### Enjoy!!!
