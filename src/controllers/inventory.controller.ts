@@ -28,7 +28,7 @@ class InventoryController {
         return;
       }
 
-      const imageUrl = req.file ? `/assets/${req.file.filename}` : "";
+      const imageUrl = req.file ? `/public/${req.file.filename}` : "";
 
       const book = await InventoryService.addBooks(
         title,

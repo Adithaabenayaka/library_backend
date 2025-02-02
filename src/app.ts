@@ -15,7 +15,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"], 
 }));
 
-app.use("/assets", express.static(path.join(__dirname, "../assets")));
+app.use("/public", express.static(path.join(__dirname, "..", "public")));
 
 // Middlewares
 app.use(express.json());
