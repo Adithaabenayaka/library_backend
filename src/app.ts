@@ -1,5 +1,6 @@
 import express from 'express';
-import configRouter from './routes/inventory.routes';
+import booksPvtRouter from './routes/bookspvt.routes';
+import booksRouter from './routes/books.routes';
 import connectDB from './config/db';
 import authRoutes from './routes/auth.routes';
 import { authenticateToken } from './middleware/authMiddleware';
@@ -23,7 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/auth", authRoutes);
-app.use("/config",authenticateToken, configRouter)
+app.use("/books", booksRouter)
+app.use("/config",authenticateToken, booksPvtRouter)
 
 
 connectDB().then(()=>{
