@@ -1,6 +1,6 @@
-import Book from "../database/models/inventory.model";
+import Book from "../database/models/books.model";
 
-class InventoryService {
+class BooksPvtService {
   // Retreive book data
   async getAllBooks(name?: string) {
     if (name) {
@@ -47,4 +47,4 @@ class InventoryService {
   
 }
 
-export default new InventoryService();
+export default new BooksPvtService();

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import InventoryService from "../service/inventory.service";
+import InventoryService from "../service/bookspvt.service";
 import { successResponse, errorResponse } from "../service/lib/responseManager";
 
-class InventoryController {
+class BooksPvtController {
   // Retreive All book data
   getAllBooks = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -86,4 +86,4 @@ class InventoryController {
     }
   }
 }
-export default new InventoryController();
+export default new BooksPvtController();
